@@ -1,0 +1,8 @@
+{
+  "storage": {
+    "authDomain"        : "fireapp-4744d.firebaseapp.com",
+    "databaseURL"       : "https://fireapp-4744d.firebaseio.com",
+    "storageBucket"     : "fireapp-4744d.appspot.com",
+    "messagingSenderId" : "570152501691"
+  }
+}
