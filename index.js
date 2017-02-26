@@ -27,17 +27,3 @@ app.use(function(req, res, next) {
 
 require("./src/app").launch(app);
 require("./src/routes").load(app);
-
-
-
-
-//usersDb = client.get("users");
-//
-//usersDb.on("value", function(users){
-//	console.log("User Modified");
-//});
-//
-//UserService.create({
-//	"name": "User One",
-//	"Id":   "101",
-//});

@@ -1,4 +1,4 @@
-var UserService = require("./services/user-service").use(require("./client").get("users"));
+var UserService = require("./services/user-service");
 
 var initialize = function(app){
 	app.get('/ping', function(request, response) {

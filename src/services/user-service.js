@@ -1,9 +1,6 @@
 var Promise = require("promise");
 var Client  = require("../client");
 var service = {
-	create: function (user) {
-		return service.schema.push(user);
-	},
 	create_new: function(user){
 		return new Promise(function(resolve, reject){
 			resolve({id: Client.get("users").push(user).key});
@@ -17,10 +14,6 @@ var service = {
 			})
 		});
 	},
-	use: function(schema){
-		service.schema = schema;
-		return service;
-	}
 };
 
 module.exports = service;
