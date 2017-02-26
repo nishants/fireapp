@@ -1,0 +1,28 @@
+{
+  "name": "fireapp",
+  "version": "1.0.0",
+  "description": "Firebase +  Nodejs + Twilio + Heroku",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "express-logging": "^1.1.1",
+    "promise": "^7.1.1",
+    "logops": "^1.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishants/nodejsheroku.git"
+  },
+  "author": "nishants",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/nishants/nodejsheroku/issues"
+  },
+  "homepage": "https://github.com/nishants/nodejsheroku#readme"
+}
