@@ -9,7 +9,8 @@ var express 		= require('express'),
 		CONFIG_FILE  		= 'CONFIG_PATH/config.json'.replace('CONFIG_PATH', CONFIG_PATH),
 		CONSTANTS_PATH  = 'CONFIG_PATH/constants.json'.replace('CONFIG_PATH', CONFIG_PATH),
 		CONFIG    		  = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8')),
-		CONSTANTS    		= JSON.parse(fs.readFileSync(CONSTANTS_PATH, 'utf8'));
+		CONSTANTS    		= JSON.parse(fs.readFileSync(CONSTANTS_PATH, 'utf8')),
+		client  				= require("./src/client").load(firebase, CONFIG.storage, process.env.CLIENT_KEY);
 
 app.use(expressLogging(logger));
 app.use(bodyParser.json()); // for parsing application/json
@@ -27,18 +28,16 @@ app.use(function(req, res, next) {
 require("./src/app").launch(app);
 require("./src/routes").load(app);
 
-var client  		= require("./src/client").load(firebase, CONFIG.storage, process.env.CLIENT_KEY),
-		UserService = require("./src/services/user-service").use(client.get("users")),
-		usersDb;
 
 
-usersDb = client.get("users");
 
-usersDb.on("value", function(users){
-	console.log("User Modified");
-});
-
-UserService.create({
-	"name": "User One",
-	"Id":   "101",
-});
+//usersDb = client.get("users");
+//
+//usersDb.on("value", function(users){
+//	console.log("User Modified");
+//});
+//
+//UserService.create({
+//	"name": "User One",
+//	"Id":   "101",
+//});
