@@ -1,0 +1,10 @@
+{
+  "routes": [
+    {
+      "name"        : "create_user",
+      "path"        : "/users",
+      "method"      : "POST",
+      "permissions" : "create_user"
+    }
+  ]
+}

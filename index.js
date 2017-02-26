@@ -1,8 +1,12 @@
 var express 		= require('express'),
 		app 				= express(), expressLogging = require('express-logging'),
     logger 			= require('logops'),
-		bodyParser 	= require('body-parser');
+		fs 					= require('fs'),
+		bodyParser 	= require('body-parser'),
 
+		CONFIG_PATH     = './config',
+		CONSTANTS_PATH  = 'CONFIG_PATH/constants.json'.replace('CONFIG_PATH', CONFIG_PATH);
+		CONSTANTS    		= JSON.parse(fs.readFileSync(CONSTANTS_PATH, 'utf8'));
 
 app.use(expressLogging(logger));
 app.use(bodyParser.json()); // for parsing application/json
@@ -18,3 +22,4 @@ app.use(function(req, res, next) {
 });
 
 require("./src/app").launch(app);
+require("./src/routes").load(app);
