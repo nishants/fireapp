@@ -5,6 +5,16 @@ var initialize = function(app){
 		response.send(JSON.stringify({message: "I am alive !"}))
 	});
 
+	app.post('/items', function(request, response) {
+		var success = function (data) {
+					response.send(JSON.stringify(data))
+				},
+				error   = function (data) {
+					response.send(JSON.stringify(data))
+				};
+		UserService.create_new(request.body.data).then(success, error);
+	});
+
 	app.post('/users', function(request, response) {
 		var success = function (data) {
 					response.send(JSON.stringify(data))
