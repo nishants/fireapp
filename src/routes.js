@@ -1,7 +1,9 @@
 var UserService = require("./services/user-service"),
-		ItemsService = require("./services/items-service");
+		ItemsService = require("./services/items-service"),
+    SceneRoutes = require("./crg/scenes/scene-routes.js");
 
 var initialize = function(app){
+  SceneRoutes.load(app);
 	app.get('/ping', function(request, response) {
 		response.send(JSON.stringify({message: "I am alive !"}))
 	});
