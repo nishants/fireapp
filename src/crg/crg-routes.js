@@ -10,6 +10,15 @@ var SceneEvent  = require("./scene-event")
         Reports.allPassages().then(success, error);
       });
 
+
+      app.get('/crg/reports/passages/:passageId', function(request, response) {
+        var passageId = request.param("passageId"),
+            success   = function (data) {response.send(JSON.stringify(data))},
+            error     = function (data) {response.send(JSON.stringify(data))};
+
+        Reports.byPassageId(passageId).then(success, error);
+      });
+
       app.post('/crg/passages/:passageId/scenes/:sceneId/events/end-of-scene', function(request, response) {
         var passageId = request.param("passageId"),
             sceneId   = request.param("sceneId"),

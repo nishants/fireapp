@@ -10,6 +10,13 @@ var Promise = require("promise"),
       return withIds;
     },
     Reports = {
+      byPassageId: function(passageId){
+        return new Promise(function (resolve, reject) {
+          Client.get("crg/passages/"+passageId).once("value").then(function (data) {
+            resolve({scenes: withIds(data.val().scenes).filter(notNull)});
+          });
+        });
+      },
       allPassages: function(){
         return new Promise(function (resolve, reject) {
           Client.get("crg").once("value").then(function (data) {
