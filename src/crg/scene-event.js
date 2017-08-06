@@ -1,5 +1,5 @@
 var Promise = require("promise"),
-    Client = require("../../client"),
+    Client = require("../client"),
     SceneEvent = {
       endOfScene: function (passageId, sceneId, event) {
         return new Promise(function (resolve, reject) {

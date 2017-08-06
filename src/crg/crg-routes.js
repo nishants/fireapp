@@ -1,8 +1,13 @@
-var SceneEvent = require("./scenes/scene-event"),
+var SceneEvent  = require("./scene-event")
+    Reports     = require("./reports"),
     SceneRoutes = {
     load: function(app){
-      app.get('/crg/scenes/:id', function(request, response) {
-        response.send(JSON.stringify({message: "You asked for " +request.params["id"]}))
+
+      app.get('/crg/reports/all', function(request, response) {
+        var success   = function (data) {response.send(JSON.stringify(data))},
+            error     = function (data) {response.send(JSON.stringify(data))};
+
+        Reports.allPassages().then(success, error);
       });
 
       app.post('/crg/passages/:passageId/scenes/:sceneId/events/end-of-scene', function(request, response) {
