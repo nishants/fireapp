@@ -1,7 +1,18 @@
 var SceneEvent  = require("./scene-event")
     Reports     = require("./reports"),
+    Feedback    = require("./feedback"),
     SceneRoutes = {
     load: function(app){
+
+      app.post('/crg/passages/:passageId/feedback/:clientId', function(request, response) {
+        var passageId = request.param("passageId"),
+            clientId  = request.param("clientId"),
+            feedback  = request.body.feedback,
+            success   = function (data) {response.send(JSON.stringify(data))},
+            error     = function (data) {response.send(JSON.stringify(data))};
+
+        Feedback.forPassage(passageId, clientId, feedback).then(success, error);
+      });
 
       app.get('/crg/reports/all', function(request, response) {
         var success   = function (data) {response.send(JSON.stringify(data))},
